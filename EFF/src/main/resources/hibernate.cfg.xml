@@ -7,21 +7,16 @@
     <property name="hibernate.connection.url">jdbc:mysql://desarrollo.is.escuelaing.edu.co:3306/coswg1?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">coswg1</property>
     <property name="hibernate.connection.password">coswg10215</property>
-    <property name="hibernate.show_sql">true</property>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Categoria"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Franquicia"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Combo"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.MetodoDePago"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComidaId"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.AlimentoId"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.ComboId"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Cliente"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Producto"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Pago"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Pedido"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.ProductoId"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Alimento"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Sucursale"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComida"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Categorias"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Franquicias"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PedidosProductos"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Pedidos"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.ProductosId"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Productos"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComidas"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Sucursales"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComidasId"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Clientes"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Pagos"/>
   </session-factory>
 </hibernate-configuration>
