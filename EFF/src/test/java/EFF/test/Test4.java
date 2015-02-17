@@ -97,15 +97,15 @@ public class Test4 {
         session.save(sucursal);
         categoria = new Categoria("Perro Caliente");
         session.save(categoria);
-        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+        Producto perro1 = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
                 categoria, sucursal, 10000, true, "perro sencillo en combo", 0);
-        session.save(producto);
-        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+        session.save(perro1);
+        Producto perro2 = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
                 categoria, sucursal, 15000, true, "perro ranchero en combo", 0);
-        session.save(producto);
-        producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
+        session.save(perro2);
+        Producto perro3 = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
                 categoria, sucursal, 18000, true, "perro doble  salchicha alemana combo", new Float(2.0));
-        session.save(producto);
+        session.save(perro3);
         
         
         //C.C BIMA
@@ -133,15 +133,15 @@ public class Test4 {
         session.save(sucursal);
         categoria = new Categoria("Sandwich");
         session.save(categoria);
-        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+        Producto sandw1 = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
                 categoria, sucursal, 7000, false, "Sandwich de atun sencillo", 0);
-        session.save(producto);
-        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+        session.save(sandw1);
+        Producto sandw2 = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
                 categoria, sucursal, 11000, true, "Sandwich de atun en combo", 0);
-        session.save(producto);
-        producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
+        session.save(sandw2);
+        Producto sandw3 = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
                 categoria, sucursal, 8500, false, "Sandwich BBQ ", new Float(2.0));
-        session.save(producto);
+        session.save(sandw3);
         
         
          //C.C Unicentro
@@ -154,24 +154,24 @@ public class Test4 {
         session.save(sucursal);
         categoria = new Categoria("Sushi");
         session.save(categoria);
-        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+        Producto sushi1 = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
                 categoria, sucursal, 24000, true, "Ojo de tigre en combo", 0);
-        session.save(producto);
-        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+        session.save(sushi1);
+        Producto sushi2 = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
                 categoria, sucursal, 16000, true, "Clasico x 12 rollos ", 0);
-        session.save(producto);
+        session.save(sushi2);
         franquicia = new  Franquicia("See", new Float(1.3));
         session.save(franquicia);
         sucursal = new Sucursal(franquicia, plazoletaComida, "5555");
         session.save(sucursal);
         categoria = new Categoria("Cazuela de mariscos");
         session.save(categoria);
-        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+        Producto cazuela1 = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
                 categoria, sucursal, 32000, true, "Cazuela de mariscos en combo especial", 0);
-        session.save(producto);
-        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+        session.save(cazuela1);
+        Producto cazuela2 = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
                 categoria, sucursal, 8500, true, "Cazuela pequeña en  combo",0);
-        session.save(producto);
+        session.save(cazuela2);
         
         franquicia = new  Franquicia("Jenos pizza", new Float(1.3));
         session.save(franquicia);
@@ -179,28 +179,65 @@ public class Test4 {
         session.save(sucursal);
         categoria = new Categoria("Pizza");
         session.save(categoria);
-        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+        Producto pizza1 = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
                 categoria, sucursal, 15000, true, "Pizza Napolitana en combo", 0);
-        session.save(producto);
-        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+        session.save(pizza1);
+        Producto pizza2 = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
                 categoria, sucursal, 15000, true, "Pizza mexicana en combo",0);
-        session.save(producto);
+        session.save(pizza2);
         
      
         
-        /*Cliente cliente;
-        cliente = new Cliente("ferchogarc010@gmail.com", "67890", "fercho", "garcia", "3103078766");
-        session.save(cliente);
-        cliente = new Cliente("pipexir@gmail.com", "themercenary", "Felipe", "Diaz", "3193387106");
-        session.save(cliente);
-        Pedido pedido = new Pedido(cliente, false, false, "en espera");
+        
+        Cliente fercho = new Cliente("ferchogarc010@gmail.com", "67890", "fercho", "garcia", "3103078766");
+        session.save(fercho);
+        Cliente felipe = new Cliente("pipexir@gmail.com", "themercenary", "Felipe", "Diaz", "3193387106");
+        session.save(felipe);
+        
+        PedidoProducto pedidoProducto;
+        Pedido pedido = new Pedido(fercho, false, false, "en espera");
         session.save(pedido);
-        PedidoProducto pedidoProducto = new PedidoProducto(pedido, producto);
+         pedidoProducto = new PedidoProducto(pedido, pizza1);
         session.save(pedidoProducto);
-        PedidoProducto pedidoProducto2 = new PedidoProducto(pedido, producto);
-        session.save(pedidoProducto2);*/
+         pedidoProducto = new PedidoProducto(pedido, pizza2);
+        session.save(pedidoProducto);
+        
+        
+        pedido = new Pedido(felipe, false, false, "en espera");
+        session.save(pedido);
+        pedidoProducto = new PedidoProducto(pedido, cazuela1);
+        session.save(pedidoProducto);
+        pedidoProducto = new PedidoProducto(pedido, cazuela2);
+        session.save(pedidoProducto);
+        
+        
+        pedido = new Pedido(felipe, false, false, "en espera");
+        session.save(pedido);
+        pedidoProducto = new PedidoProducto(pedido, sushi1);
+        session.save(pedidoProducto);
+        pedidoProducto = new PedidoProducto(pedido, sushi2);
+        session.save(pedidoProducto);
+        
+        pedido = new Pedido(fercho, false, false, "en espera");
+        session.save(pedido);
+        pedidoProducto = new PedidoProducto(pedido, sandw1);
+        session.save(pedidoProducto);
+        pedidoProducto = new PedidoProducto(pedido, sandw2);
+        session.save(pedidoProducto);
+        pedidoProducto = new PedidoProducto(pedido, sandw3);
+        session.save(pedidoProducto);
+        
+        pedido = new Pedido(fercho, false, false, "en espera");
+        session.save(pedido);
+        pedidoProducto = new PedidoProducto(pedido, perro1);
+        session.save(pedidoProducto);
+        pedidoProducto = new PedidoProducto(pedido, perro2);
+        session.save(pedidoProducto);
+        pedidoProducto = new PedidoProducto(pedido, perro3);
+        session.save(pedidoProducto);
         
         //realizar una consulta
+        
         
         //comparar el resultado esperado contra el obtenido con un assert
         assertTrue(true==true);
