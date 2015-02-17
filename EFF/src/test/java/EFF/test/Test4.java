@@ -5,6 +5,27 @@
  */
 package EFF.test;
 
+import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Categoria;
+import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Cliente;
+import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Franquicia;
+import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Pedido;
+import edu.eci.cosw.persistenceexercises.simplepersistencelayer.PedidoProducto;
+import edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComida;
+import edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComidaId;
+import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Producto;
+import edu.eci.cosw.persistenceexercises.simplepersistencelayer.ProductoId;
+import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Sucursal;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
+import org.junit.After;
+import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+
 
 /*
 Consulta 4 
@@ -17,5 +38,176 @@ realizados
  * @author Pipe
  */
 public class Test4 {
+    private SessionFactory sessionFactory;
+    private Session session = null;
+    
+    /**
+     * Operaciones que se realizan antes de ejecutar el banco de pruebas.
+     * En este caso se crea una misma sesión que será usada en todas las
+     * pruebas.
+     */
+    @Before
+    public void setupSession() {
+        
+        Configuration configuration = new Configuration();
+        configuration.configure("hibernate-inmemory.cfg.xml");
+        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(
+        configuration.getProperties()).buildServiceRegistry();
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        session=sessionFactory.openSession();
+        
+    }
+        
+    /**
+     * Operaciones que se realizan cuando finalice la ejecución de las pruebas.
+     * En este caso se cierra la sesi_n y la f_brica de sesiones.
+     */
+    @After
+    public void closeResources(){
+        session.close();
+        sessionFactory.close();
+    }
+ 
+    /**
+     * El objetivo de esta prueba es que el mapeo permita hacer persistentes
+     * productos, y luego consultar de forma consistente los mismos
+     * Estado inicial: base de datos vacía.
+     * Prueba: La consulta de la sumatora del precio de los productos debe
+     * ser consistente con los precios de los productos ingresados.
+     * 
+     */
+    @Test
+    public void sampleTest(){
+        Transaction tx=session.beginTransaction();
+        
+        //realizar operación de persistencia
+        PlazoletaComida plazoletaComida;
+        Franquicia franquicia;
+        Sucursal sucursal;
+        Producto producto;
+        Categoria categoria;
+        
+        //C.C Santa fe 
+        plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("C.C. Santa fe", "Bogotá")
+                , 1, 1, 1, 'W', 1, 1, 1, 'N');
+        session.save(plazoletaComida);
+        franquicia = new  Franquicia("Mc Donalds", new Float(1.3));
+        session.save(franquicia);
+        sucursal = new Sucursal(franquicia, plazoletaComida, "1111");
+        session.save(sucursal);
+        categoria = new Categoria("Perro Caliente");
+        session.save(categoria);
+        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+                categoria, sucursal, 10000, true, "perro sencillo en combo", 0);
+        session.save(producto);
+        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+                categoria, sucursal, 15000, true, "perro ranchero en combo", 0);
+        session.save(producto);
+        producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
+                categoria, sucursal, 18000, true, "perro doble  salchicha alemana combo", new Float(2.0));
+        session.save(producto);
+        
+        
+        //C.C BIMA
+        plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("C.C. BIMA", "Bogotá")
+                , 2, 2, 2, 'N', 2, 2, 2, 'W');
+        session.save(plazoletaComida);
+        franquicia = new  Franquicia("Taco bell", new Float(1.3));
+        session.save(franquicia);
+        sucursal = new Sucursal(franquicia, plazoletaComida, "2222");
+        session.save(sucursal);
+        categoria = new Categoria("Burrito");
+        session.save(categoria);
+        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+                categoria, sucursal, 9000, false, "burrito mixto grande", 0);
+        session.save(producto);
+        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+                categoria, sucursal, 13000, true, "burrito mixto grande combo", 0);
+        session.save(producto);
+        producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
+                categoria, sucursal, 15000, true, "burrito pollo combo especial", new Float(2.0));
+        session.save(producto);
+        franquicia = new  Franquicia("Q-bano", new Float(1.3));
+        session.save(franquicia);
+        sucursal = new Sucursal(franquicia, plazoletaComida, "3333");
+        session.save(sucursal);
+        categoria = new Categoria("Sandwich");
+        session.save(categoria);
+        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+                categoria, sucursal, 7000, false, "Sandwich de atun sencillo", 0);
+        session.save(producto);
+        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+                categoria, sucursal, 11000, true, "Sandwich de atun en combo", 0);
+        session.save(producto);
+        producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
+                categoria, sucursal, 8500, false, "Sandwich BBQ ", new Float(2.0));
+        session.save(producto);
+        
+        
+         //C.C Unicentro
+        plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("C.C. Unicentro", "Bogotá")
+                , 3, 3,3, 'S', 3, 3, 3, 'W');
+        session.save(plazoletaComida);
+        franquicia = new  Franquicia("Mr. Lee", new Float(1.3));
+        session.save(franquicia);
+        sucursal = new Sucursal(franquicia, plazoletaComida, "4444");
+        session.save(sucursal);
+        categoria = new Categoria("Sushi");
+        session.save(categoria);
+        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+                categoria, sucursal, 24000, true, "Ojo de tigre en combo", 0);
+        session.save(producto);
+        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+                categoria, sucursal, 16000, true, "Clasico x 12 rollos ", 0);
+        session.save(producto);
+        franquicia = new  Franquicia("See", new Float(1.3));
+        session.save(franquicia);
+        sucursal = new Sucursal(franquicia, plazoletaComida, "5555");
+        session.save(sucursal);
+        categoria = new Categoria("Cazuela de mariscos");
+        session.save(categoria);
+        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+                categoria, sucursal, 32000, true, "Cazuela de mariscos en combo especial", 0);
+        session.save(producto);
+        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+                categoria, sucursal, 8500, true, "Cazuela pequeña en  combo",0);
+        session.save(producto);
+        
+        franquicia = new  Franquicia("Jenos pizza", new Float(1.3));
+        session.save(franquicia);
+        sucursal = new Sucursal(franquicia, plazoletaComida, "6666");
+        session.save(sucursal);
+        categoria = new Categoria("Pizza");
+        session.save(categoria);
+        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+                categoria, sucursal, 15000, true, "Pizza Napolitana en combo", 0);
+        session.save(producto);
+        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+                categoria, sucursal, 15000, true, "Pizza mexicana en combo",0);
+        session.save(producto);
+        
+     
+        
+        /*Cliente cliente;
+        cliente = new Cliente("ferchogarc010@gmail.com", "67890", "fercho", "garcia", "3103078766");
+        session.save(cliente);
+        cliente = new Cliente("pipexir@gmail.com", "themercenary", "Felipe", "Diaz", "3193387106");
+        session.save(cliente);
+        Pedido pedido = new Pedido(cliente, false, false, "en espera");
+        session.save(pedido);
+        PedidoProducto pedidoProducto = new PedidoProducto(pedido, producto);
+        session.save(pedidoProducto);
+        PedidoProducto pedidoProducto2 = new PedidoProducto(pedido, producto);
+        session.save(pedidoProducto2);*/
+        
+        //realizar una consulta
+        
+        //comparar el resultado esperado contra el obtenido con un assert
+        assertTrue(true==true);
+        
+        tx.commit();        
+    }
+    
+    
     
 }
