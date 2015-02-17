@@ -15,6 +15,8 @@ import edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComidaI
 import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Producto;
 import edu.eci.cosw.persistenceexercises.simplepersistencelayer.ProductoId;
 import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Sucursal;
+import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -22,6 +24,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.After;
+import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -103,9 +107,11 @@ public class Test1 {
         PedidoProducto pedidoProducto2 = new PedidoProducto(pedido, producto);
         session.save(pedidoProducto2);
         
+        Query q = session.createQuery("select pp.productos from Pedido as p inner join p.pedidosProductoses as pp where p.clientes.correoCliente= :correo");
+        q.setString("correo", cliente.getCorreoCliente());
+        List<Producto> l = q.list();
         
-        
-        
+        assertEquals("el pedido no fue registrado exitosamente",l.size(), 2);
         tx.commit();        
     }
     
