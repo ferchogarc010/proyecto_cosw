@@ -276,6 +276,9 @@ select p.productos.sucursales.plazoletaComidas.id from PedidoProducto  as p grou
 
 select  c.id, count(c) from PedidoProducto  p JOIN p.productos  o JOIN o.sucursales  s  JOIN s.plazoletaComidas as c group by c
 
+    
+select  count( distinct p.pedidos.id) , c.id  from PedidoProducto  p JOIN p.productos  o JOIN o.sucursales  s  JOIN s.plazoletaComidas as c  group by c.id 
+    
 0368930315
 29340141073
     */
