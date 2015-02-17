@@ -40,7 +40,7 @@ public class Pedido  implements java.io.Serializable {
         this.notificadoAcliente = notificadoAcliente;
         this.estadoPedido = estadoPedido;
     }
-    public Pedido(Cliente clientes, boolean enviadoAsucursal, boolean notificadoAcliente, String estadoPedido, Set pedidosProductoses) {
+    public Pedido(Cliente clientes, boolean enviadoAsucursal, boolean notificadoAcliente, String estadoPedido, Set<PedidoProducto> pedidosProductoses) {
        this.clientes = clientes;
        this.enviadoAsucursal = enviadoAsucursal;
        this.notificadoAcliente = notificadoAcliente;
@@ -99,11 +99,11 @@ public class Pedido  implements java.io.Serializable {
     }
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="pedidos")
-    public Set getPedidosProductoses() {
+    public Set<PedidoProducto> getPedidosProductoses() {
         return this.pedidosProductoses;
     }
     
-    public void setPedidosProductoses(Set pedidosProductoses) {
+    public void setPedidosProductoses(Set<PedidoProducto> pedidosProductoses) {
         this.pedidosProductoses = pedidosProductoses;
     }
 }

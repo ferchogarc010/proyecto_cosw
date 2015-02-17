@@ -45,7 +45,7 @@ public class Producto  implements java.io.Serializable {
         this.descripcion = descripcion;
         this.porcentajeDescuento = porcentajeDescuento;
     }
-    public Producto(ProductoId id,Categoria categorias, Sucursal sucursales, float precio, boolean esCombo, String descripcion, float porcentajeDescuento, Set pedidosProductoses) {
+    public Producto(ProductoId id,Categoria categorias, Sucursal sucursales, float precio, boolean esCombo, String descripcion, float porcentajeDescuento, Set<PedidoProducto> pedidosProductoses) {
        this.id = id;
        this.categorias = categorias;
        this.sucursales = sucursales;
@@ -74,7 +74,7 @@ public class Producto  implements java.io.Serializable {
         return this.categorias;
     }
     
-    public void setCategoria(Categoria categorias) {
+    public void setCategorias(Categoria categorias) {
         this.categorias = categorias;
     }
 
@@ -129,11 +129,11 @@ public class Producto  implements java.io.Serializable {
     }
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="productos")
-    public Set getPedidosProductoses() {
+    public Set<PedidoProducto> getPedidosProductoses() {
         return this.pedidosProductoses;
     }
     
-    public void setPedidosProductoses(Set pedidosProductoses) {
+    public void setPedidosProductoses(Set<PedidoProducto> pedidosProductoses) {
         this.pedidosProductoses = pedidosProductoses;
     }
 

@@ -11,20 +11,15 @@
     <!-- Aqui agregar las clases mapeadas-->
     <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Categoria"/>
     <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Franquicia"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Combo"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.MetodoDePago"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComidaId"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.AlimentoId"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.ComboId"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Cliente"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Producto"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Pago"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PedidoProducto"/>
     <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Pedido"/>
     <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.ProductoId"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Alimento"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Sucursale"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Producto"/>
     <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComida"/>
-
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Sucursal"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComidaId"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Cliente"/>
+    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Pago"/>
 
     </session-factory>  
 </hibernate-configuration>
