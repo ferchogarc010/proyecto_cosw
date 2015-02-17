@@ -26,7 +26,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
  *
  * @author Pipe
  */
-public class Main {
+public class IndexarDatos {
     
     
     public static void main(String[] args){
@@ -47,7 +47,6 @@ public class Main {
         PlazoletaComida plazoletaComida;
         Franquicia franquicia;
         Sucursal sucursal;
-        Producto producto;
         Categoria categoria;
         
         //C.C Santa fe 
@@ -81,15 +80,15 @@ public class Main {
         session.save(sucursal);
         categoria = new Categoria("Burrito");
         session.save(categoria);
-        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+        Producto burro1 = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
                 categoria, sucursal, 9000, false, "burrito mixto grande", 0);
-        session.save(producto);
-        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+        session.save(burro1);
+        Producto burro2  = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
                 categoria, sucursal, 13000, true, "burrito mixto grande combo", 0);
-        session.save(producto);
-        producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
+        session.save(burro2);
+        Producto burro3 = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
                 categoria, sucursal, 15000, true, "burrito pollo combo especial", new Float(2.0));
-        session.save(producto);
+        session.save(burro3);
         franquicia = new  Franquicia("Q-bano", new Float(1.3));
         session.save(franquicia);
         sucursal = new Sucursal(franquicia, plazoletaComida, "3333");
@@ -156,7 +155,7 @@ public class Main {
         session.save(fercho);
         Cliente felipe = new Cliente("pipexir@gmail.com", "themercenary", "Felipe", "Diaz", "3193387106");
         session.save(felipe);
-        
+       
         PedidoProducto pedidoProducto;
         Pedido pedido = new Pedido(fercho, false, false, "en espera");
         session.save(pedido);
@@ -199,6 +198,24 @@ public class Main {
         pedidoProducto = new PedidoProducto(pedido, perro3);
         session.save(pedidoProducto);
         
+        
+        
+        
+        /* Cliente jenni =  new  Cliente("jennibarajas@gmail.com" ,  "comunismo"  , "Jenni" , "Barajas" , "321505481");
+        session.save(jenni);
+        PedidoProducto pedidoProducto;
+        Producto burro1 = (Producto)session.load(Producto.class, new ProductoId("1" ,2 ));
+        Pedido pedido = new Pedido(jenni, false, false, "en espera");
+        session.save(pedido);
+        pedidoProducto = new PedidoProducto(pedido, burro1);
+        session.save(pedidoProducto);
+        Producto burro2 = (Producto)session.load(Producto.class, new ProductoId("1" ,2 ));
+        pedidoProducto = new PedidoProducto(pedido, burro2);
+        session.save(pedidoProducto);
+        Producto burro3 = (Producto)session.load(Producto.class, new ProductoId("1" ,2 ));
+        pedidoProducto = new PedidoProducto(pedido, burro3);
+        session.save(pedidoProducto);
+        */
        
         
         

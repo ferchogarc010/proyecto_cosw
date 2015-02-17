@@ -118,15 +118,15 @@ public class Test4 {
         session.save(sucursal);
         categoria = new Categoria("Burrito");
         session.save(categoria);
-        producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+        Producto burro1 = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
                 categoria, sucursal, 9000, false, "burrito mixto grande", 0);
-        session.save(producto);
-        producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+        session.save(burro1);
+        Producto burro2 = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
                 categoria, sucursal, 13000, true, "burrito mixto grande combo", 0);
-        session.save(producto);
-        producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
+        session.save(burro2);
+        Producto burro3 = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
                 categoria, sucursal, 15000, true, "burrito pollo combo especial", new Float(2.0));
-        session.save(producto);
+        session.save(burro3);
         franquicia = new  Franquicia("Q-bano", new Float(1.3));
         session.save(franquicia);
         sucursal = new Sucursal(franquicia, plazoletaComida, "3333");
@@ -193,6 +193,8 @@ public class Test4 {
         session.save(fercho);
         Cliente felipe = new Cliente("pipexir@gmail.com", "themercenary", "Felipe", "Diaz", "3193387106");
         session.save(felipe);
+        Cliente jenni =  new  Cliente("jennibarajas@gmail.com" ,  "comunismo"  , "Jenni" , "Barajas" , "321505481");
+        session.save(jenni);
         
         PedidoProducto pedidoProducto;
         Pedido pedido = new Pedido(fercho, false, false, "en espera");
@@ -235,6 +237,15 @@ public class Test4 {
         session.save(pedidoProducto);
         pedidoProducto = new PedidoProducto(pedido, perro3);
         session.save(pedidoProducto);
+
+        pedido = new Pedido(jenni, false, false, "en espera");
+        session.save(pedido);
+        pedidoProducto = new PedidoProducto(pedido, burro1);
+        session.save(pedidoProducto);
+        pedidoProducto = new PedidoProducto(pedido, burro2);
+        session.save(pedidoProducto);
+        pedidoProducto = new PedidoProducto(pedido, burro3);
+        session.save(pedidoProducto);
         
         //realizar una consulta
         
@@ -246,5 +257,26 @@ public class Test4 {
     }
     
     
+    /*
     
+    select c.plazoletaComidas from PedidoProducto as p JOIN p.producto as o JOIN o.sucursal as s JOIN s.PlazoletaComidas as c
+
+from PedidoProducto  p JOIN p.productos  o JOIN o.sucursales  s  JOIN s.plazoletaComidas as c
+
+select  c.id from PedidoProducto  p JOIN p.productos  o JOIN o.sucursales  s  JOIN s.plazoletaComidas as c
+
+select o.sucursales.plazoletaComidas.id from PedoProducto 
+
+
+
+
+select p.productos.sucursales.plazoletaComidas.id from PedidoProducto  as p group by p.productos.sucursales
+
+
+
+select  c.id, count(c) from PedidoProducto  p JOIN p.productos  o JOIN o.sucursales  s  JOIN s.plazoletaComidas as c group by c
+
+0368930315
+29340141073
+    */
 }
