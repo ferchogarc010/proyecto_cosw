@@ -104,7 +104,7 @@ public class Test1 {
         session.save(pedido);
         PedidoProducto pedidoProducto = new PedidoProducto(pedido, producto);
         session.save(pedidoProducto);
-        PedidoProducto pedidoProducto2 = new PedidoProducto(pedido, producto);
+        PedidoProducto pedidoProducto2 = new PedidoProducto(pedido, producto2);
         session.save(pedidoProducto2);
         
         Query q = session.createQuery("select pp.productos from Pedido as p inner join p.pedidosProductoses as pp where p.clientes.correoCliente= :correo");
