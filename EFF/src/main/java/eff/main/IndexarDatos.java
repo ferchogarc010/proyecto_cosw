@@ -8,6 +8,7 @@ package eff.main;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Categoria;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Cliente;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Franquicia;
+import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Pago;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Pedido;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PedidoProducto;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PlazoletaComida;
@@ -15,6 +16,7 @@ import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PlazoletaComidaId;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Producto;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.ProductoId;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Sucursal;
+import java.sql.Date;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -197,8 +199,6 @@ public class IndexarDatos {
         session.save(pedidoProducto);
         pedidoProducto = new PedidoProducto(pedido, perro3);
         session.save(pedidoProducto);
-        
-        
         
         
         /* Cliente jenni =  new  Cliente("jennibarajas@gmail.com" ,  "comunismo"  , "Jenni" , "Barajas" , "321505481");

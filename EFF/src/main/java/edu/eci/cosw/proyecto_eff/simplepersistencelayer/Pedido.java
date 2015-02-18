@@ -4,6 +4,7 @@ package edu.eci.cosw.proyecto_eff.simplepersistencelayer;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -58,7 +59,7 @@ public class Pedido  implements java.io.Serializable {
         this.idPedidos = idPedidos;
     }
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="Clientes_correo_cliente", nullable=false)
     public Cliente getClientes() {
         return this.clientes;

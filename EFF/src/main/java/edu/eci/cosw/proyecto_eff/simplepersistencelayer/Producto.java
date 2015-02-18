@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -128,7 +129,7 @@ public class Producto  implements java.io.Serializable {
         this.porcentajeDescuento = porcentajeDescuento;
     }
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy="productos")
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="productos",cascade = CascadeType.ALL)
     public Set<PedidoProducto> getPedidosProductoses() {
         return this.pedidosProductoses;
     }
