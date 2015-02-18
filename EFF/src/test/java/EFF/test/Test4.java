@@ -35,10 +35,13 @@ Consulta 4
 Ranking de las plazoletas de comida (centros comerciales) de acuerdo a la 
 utilización del servicio de pedidos en línea (ordenado por número de pedidos
 realizados
+Autor : Luis Felipe Diaz Chica
+COSW - EFF
 */
 /**
  *
- * @author Pipe
+ * @author Luis Felipe Diaz Chica
+ * 
  */
 public class Test4 {
     private SessionFactory sessionFactory;
@@ -84,6 +87,7 @@ public class Test4 {
         Transaction tx=session.beginTransaction();
         
         //realizar operación de persistencia
+        //se agregan los datos de persistencia para las pruebas
         PlazoletaComida plazoletaComida;
         Franquicia franquicia;
         Sucursal sucursal;
@@ -250,24 +254,28 @@ public class Test4 {
         pedidoProducto = new PedidoProducto(pedido, burro3);
         session.save(pedidoProducto);
         
+        
+        
+        
+        
         //realizar una consulta
-
-        
-        
+        //Se ejecuta la consulta
         Query q ;
         q=session.createQuery("select  c.id  ,  count( distinct p.pedidos.id) as   k  "
                 + "from PedidoProducto  p JOIN p.productos  o JOIN o.sucursales  s "
                 + " JOIN s.plazoletaComidas as c  group by c.id order by k DESC");
        
-      
+        //Guardar registros en un arreglo de objetos ya que no es un 
+        //objeto mapeado lo que se devuelve
         List<Object[]> res=q.list();
         
         
-        //comparar el resultado esperado contra el obtenido con un assert
         
+        //Se verifica el orden del ranking de mayor numero de pedidos a menor 
+        //numero de pedidos 
         assertTrue((Long)res.get(0)[1] >= (Long)res.get(1)[1]);
         assertTrue((Long)res.get(1)[1] >= (Long)res.get(2)[1]);
-        
+        //Verificar cantidad de pedidos en cada fila
         assertTrue((Long)res.get(0)[1]==3);
         assertTrue((Long)res.get(1)[1]==2);
         assertTrue((Long)res.get(2)[1]==1);
@@ -278,7 +286,7 @@ public class Test4 {
     
     /*
     
-    select c.plazoletaComidas from PedidoProducto as p JOIN p.producto as o JOIN o.sucursal as s JOIN s.PlazoletaComidas as c
+select c.plazoletaComidas from PedidoProducto as p JOIN p.producto as o JOIN o.sucursal as s JOIN s.PlazoletaComidas as c
 
 from PedidoProducto  p JOIN p.productos  o JOIN o.sucursales  s  JOIN s.plazoletaComidas as c
 
