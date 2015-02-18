@@ -9,18 +9,17 @@
     <property name="hibernate.show_sql">true</property>
     
     <!-- Aqui agregar las clases mapeadas-->
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Categoria"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Franquicia"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PedidoProducto"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Pedido"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.ProductoId"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Producto"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComida"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Sucursal"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComidaId"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Cliente"/>
-    <mapping class="edu.eci.cosw.persistenceexercises.simplepersistencelayer.Pago"/>
-
+    <mapping class="edu.eci.cosw.proyecto_eff.simplepersistencelayer.Categoria"/>
+    <mapping class="edu.eci.cosw.proyecto_eff.simplepersistencelayer.Franquicia"/>
+    <mapping class="edu.eci.cosw.proyecto_eff.simplepersistencelayer.PedidoProducto"/>
+    <mapping class="edu.eci.cosw.proyecto_eff.simplepersistencelayer.Pedido"/>
+    <mapping class="edu.eci.cosw.proyecto_eff.simplepersistencelayer.ProductoId"/>
+    <mapping class="edu.eci.cosw.proyecto_eff.simplepersistencelayer.Producto"/>
+    <mapping class="edu.eci.cosw.proyecto_eff.simplepersistencelayer.PlazoletaComida"/>
+    <mapping class="edu.eci.cosw.proyecto_eff.simplepersistencelayer.Sucursal"/>
+    <mapping class="edu.eci.cosw.proyecto_eff.simplepersistencelayer.PlazoletaComidaId"/>
+    <mapping class="edu.eci.cosw.proyecto_eff.simplepersistencelayer.Cliente"/>
+    <mapping class="edu.eci.cosw.proyecto_eff.simplepersistencelayer.Pago"/>
     </session-factory>  
 </hibernate-configuration>
 
