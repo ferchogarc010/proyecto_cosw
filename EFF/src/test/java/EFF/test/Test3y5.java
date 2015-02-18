@@ -6,6 +6,7 @@
 package EFF.test;
 
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Pago;
+import java.sql.Date;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -58,7 +59,8 @@ public class Test3y5 {
         Transaction tx=session.beginTransaction();
         
         //Cálculo del valor total pagado a una franquicia en un intervalo de fechas.
-            Pago p= new Pago(null, null, monto, null)
+        Date d= new Date(date);
+            Pago p= new Pago(5, new Date , monto, null)
        
         //comparar el resultado esperado contra el obtenido con un assert
         assertTrue(true==true);
