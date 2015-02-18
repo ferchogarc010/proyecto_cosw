@@ -15,6 +15,9 @@ import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PlazoletaComidaId;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Producto;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.ProductoId;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Sucursal;
+import java.util.Arrays;
+import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -77,7 +80,7 @@ public class Test4 {
      * 
      */
     @Test
-    public void sampleTest(){
+    public void testRanking(){
         Transaction tx=session.beginTransaction();
         
         //realizar operación de persistencia
@@ -248,11 +251,27 @@ public class Test4 {
         session.save(pedidoProducto);
         
         //realizar una consulta
+
+        
+        
+        Query q ;
+        q=session.createQuery("select  c.id  ,  count( distinct p.pedidos.id) as   k  "
+                + "from PedidoProducto  p JOIN p.productos  o JOIN o.sucursales  s "
+                + " JOIN s.plazoletaComidas as c  group by c.id order by k DESC");
+       
+      
+        List<Object[]> res=q.list();
         
         
         //comparar el resultado esperado contra el obtenido con un assert
-        assertTrue(true==true);
         
+        assertTrue((Long)res.get(0)[1] >= (Long)res.get(1)[1]);
+        assertTrue((Long)res.get(1)[1] >= (Long)res.get(2)[1]);
+        
+        assertTrue((Long)res.get(0)[1]==3);
+        assertTrue((Long)res.get(1)[1]==2);
+        assertTrue((Long)res.get(2)[1]==1);
+
         tx.commit();        
     }
     
