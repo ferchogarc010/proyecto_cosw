@@ -1,4 +1,4 @@
-package edu.eci.cosw.persistenceexercises.simplepersistencelayer;
+package edu.eci.cosw.proyecto_eff.simplepersistencelayer;
 // Generated Feb 16, 2015 2:07:09 PM by Hibernate Tools 4.3.1
 
 
@@ -88,7 +88,8 @@ public class Pago  implements java.io.Serializable {
     public void setMetodoPago(String metodoPago) {
         this.metodoPago = metodoPago;
     }
-
+    
+    
 
 
 

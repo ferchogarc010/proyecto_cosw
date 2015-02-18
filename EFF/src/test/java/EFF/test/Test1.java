@@ -5,16 +5,16 @@
  */
 package EFF.test;
 
-import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Categoria;
-import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Cliente;
-import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Franquicia;
-import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Pedido;
-import edu.eci.cosw.persistenceexercises.simplepersistencelayer.PedidoProducto;
-import edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComida;
-import edu.eci.cosw.persistenceexercises.simplepersistencelayer.PlazoletaComidaId;
-import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Producto;
-import edu.eci.cosw.persistenceexercises.simplepersistencelayer.ProductoId;
-import edu.eci.cosw.persistenceexercises.simplepersistencelayer.Sucursal;
+import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Categoria;
+import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Cliente;
+import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Franquicia;
+import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Pedido;
+import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PedidoProducto;
+import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PlazoletaComida;
+import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PlazoletaComidaId;
+import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Producto;
+import edu.eci.cosw.proyecto_eff.simplepersistencelayer.ProductoId;
+import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Sucursal;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
