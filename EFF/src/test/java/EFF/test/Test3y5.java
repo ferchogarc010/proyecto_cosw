@@ -18,6 +18,7 @@ import edu.eci.cosw.proyecto_eff.simplepersistencelayer.ProductoId;
 import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Sucursal;
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,6 +27,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.After;
+import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -91,15 +93,15 @@ public class Test3y5 {
         Producto producto3 = new Producto(new ProductoId("47", sucursal.getIdSucursales()), categoria3, sucursal, 8000, true, "pastel helado", 0);
         session.save(producto3);
         
-        Franquicia franquicia2 = new  Franquicia("Hamburguesa el corral", new Float(15));
+        Franquicia franquicia2 = new  Franquicia("Hamburguesas el corral", new Float(15));
         session.save(franquicia2);
         Sucursal sucursal2 = new Sucursal(franquicia2, plazoleta, "12345");
         session.save(sucursal2);
-        Producto p1 = new Producto(new ProductoId("C45", sucursal2.getIdSucursales()), categoria, sucursal2, 12000, false, "Corralisima", new Float(0.10));
+        Producto p1 = new Producto(new ProductoId("C45", sucursal2.getIdSucursales()), categoria, sucursal2, 12000, false, "Corralisima", 0);
         session.save(p1);
         Producto p2 = new Producto(new ProductoId("C46", sucursal2.getIdSucursales()), categoria, sucursal2, 15000, false, "Corral doble carne", 0);
         session.save(p2);
-        Producto p3 = new Producto(new ProductoId("C47", sucursal2.getIdSucursales()), categoria, sucursal2, 15000, false, "todoterreno", new Float(0.5));
+        Producto p3 = new Producto(new ProductoId("C47", sucursal2.getIdSucursales()), categoria, sucursal2, 15000, false, "todoterreno", 0);
         session.save(p3);
         
          //Genera Cliente 
@@ -161,22 +163,22 @@ public class Test3y5 {
        
         //Generate a date 
         Calendar cal1 = Calendar.getInstance();
-        cal1.set(2013, Calendar.JANUARY, 9, 7, 11, 11); 
+        cal1.set(2015, Calendar.JANUARY, 9, 7, 11, 11); 
         
         Calendar cal2 = Calendar.getInstance();
-        cal2.set(2013, Calendar.JANUARY, 11, 3, 06, 11);
+        cal2.set(2015, Calendar.JANUARY, 11, 3, 06, 11);
         
         Calendar cal3 = Calendar.getInstance();
-        cal3.set(2013, Calendar.JANUARY, 10, 11, 10, 12);
+        cal3.set(2015, Calendar.JANUARY, 10, 11, 10, 12);
         
         Calendar cal4 = Calendar.getInstance();
-        cal4.set(2013, Calendar.JANUARY, 10, 9, 12, 55);
+        cal4.set(2015, Calendar.JANUARY, 10, 9, 12, 55);
         
         Calendar cal5 = Calendar.getInstance();
-        cal5.set(2013, Calendar.JANUARY, 11, 8, 30, 12); 
+        cal5.set(2015, Calendar.JANUARY, 11, 8, 30, 12); 
         
         Calendar cal6 = Calendar.getInstance();
-        cal6.set(2013, Calendar.JANUARY, 9, 12, 00, 23); 
+        cal6.set(2015, Calendar.JANUARY, 9, 12, 00, 23); 
         
         //Registro de Pagos 
         
@@ -194,10 +196,18 @@ public class Test3y5 {
         session.save(pago6);
        
          //Cálculo del valor total pagado a una franquicia en un intervalo de fechas.
-        Query q= session.createQuery("");
-       
-        //comparar el resultado esperado contra el obtenido con un assert
-        assertTrue(true==true);
+        Query q= session.createQuery("select sum(p.monto) from Pago p inner join p.pedidos as ped inner join ped.pedidosProductoses as pp inner join pp.productos as prod inner join prod.sucursales as s inner join s.franquicias as f Where '2014-01-09'<=p.fechaPago AND p.fechaPago<= '2016-01-11' AND f.idFranquicia='Burguer King'");
+
+        List<Double> l = q.list();
+        System.out.println(l.toString());
+        Assert.assertEquals(l.get(0),new Double(140000.0));
+        
+        
+       //Detalle de las transacciones realizadas con una franquicia en un intervalo de fechas.
+        Query q1=session.createQuery("select prod.id, prod.descripcion, p.monto from Pago p inner join p.pedidos as ped inner join ped.pedidosProductoses as pp inner join pp.productos as prod inner join prod.sucursales as s inner join s.franquicias as f Where '2014-01-09'<=p.fechaPago AND p.fechaPago<= '2016-01-11' AND f.idFranquicia='Burguer King'");
+        List<Object []> l1= q1.list();
+        System.out.println(l1.toString());
+        Assert.assertEquals(l1.size(),6);
         
         tx.commit();        
     }
