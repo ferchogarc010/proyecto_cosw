@@ -34,8 +34,6 @@ import org.junit.Test;
  *
  * @author fercho
  * 
- * Registro de un pedido que involucre platos de diferentes franquicias dentro de un centro comercial.
-	
  */
 public class Test1 {
     private SessionFactory sessionFactory;
@@ -69,12 +67,7 @@ public class Test1 {
     }
  
     /**
-     * El objetivo de esta prueba es que el mapeo permita hacer persistentes
-     * productos, y luego consultar de forma consistente los mismos
-     * Estado inicial: base de datos vacía.
-     * Prueba: La consulta de la sumatora del precio de los productos debe
-     * ser consistente con los precios de los productos ingresados.
-     * 
+     * Registro de un pedido que involucre platos de diferentes franquicias dentro de un centro comercial.
      */
     @Test
     public void sampleTest(){
