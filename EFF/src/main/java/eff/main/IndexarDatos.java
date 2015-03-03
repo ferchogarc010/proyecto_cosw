@@ -53,7 +53,7 @@ public class IndexarDatos {
         
         //C.C Santa fe 
         plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("C.C. Santa fe", "Bogotá")
-                , 1, 1, 1, 'W', 1, 1, 1, 'N');
+                , 1, 1, 1, 'W', 1, 1, 1, 'N',1);
         session.save(plazoletaComida);
         franquicia = new  Franquicia("Mc Donalds", new Float(1.3));
         session.save(franquicia);
@@ -74,7 +74,7 @@ public class IndexarDatos {
         
         //C.C BIMA
         plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("C.C. BIMA", "Bogotá")
-                , 2, 2, 2, 'N', 2, 2, 2, 'W');
+                , 2, 2, 2, 'N', 2, 2, 2, 'W',2);
         session.save(plazoletaComida);
         franquicia = new  Franquicia("Taco bell", new Float(1.3));
         session.save(franquicia);
@@ -110,7 +110,7 @@ public class IndexarDatos {
         
          //C.C Unicentro
         plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("C.C. Unicentro", "Bogotá")
-                , 3, 3,3, 'S', 3, 3, 3, 'W');
+                , 3, 3,3, 'S', 3, 3, 3, 'W',3);
         session.save(plazoletaComida);
         franquicia = new  Franquicia("Mr. Lee", new Float(1.3));
         session.save(franquicia);

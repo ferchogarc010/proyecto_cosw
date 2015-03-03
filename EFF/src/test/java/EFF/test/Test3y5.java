@@ -73,7 +73,7 @@ public class Test3y5 {
         Transaction tx=session.beginTransaction();
         
         // Creación de datos para realizar la consulta
-        PlazoletaComida plazoleta = new PlazoletaComida(new PlazoletaComidaId("C.C. Santa fe", "Bogotá"), 1, 1, 1, 'W', 1, 1, 1, 'N');
+        PlazoletaComida plazoleta = new PlazoletaComida(new PlazoletaComidaId("C.C. Santa fe", "Bogotá"), 1, 1, 1, 'W', 1, 1, 1, 'N',1);
         session.save(plazoleta);
         
         Franquicia franquicia = new  Franquicia("Burguer King", new Float(12.5));

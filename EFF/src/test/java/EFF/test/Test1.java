@@ -72,7 +72,7 @@ public class Test1 {
     @Test
     public void sampleTest(){
         Transaction tx=session.beginTransaction();
-        PlazoletaComida plazoleta = new PlazoletaComida(new PlazoletaComidaId("C.C. Santa fe", "Bogotá"), 1, 1, 1, 'W', 1, 1, 1, 'N');
+        PlazoletaComida plazoleta = new PlazoletaComida(new PlazoletaComidaId("C.C. Santa fe", "Bogotá"), 1, 1, 1, 'W', 1, 1, 1, 'N',1);
         session.save(plazoleta);
         
         Franquicia franquicia = new  Franquicia("Burguer King", new Float(12.5));

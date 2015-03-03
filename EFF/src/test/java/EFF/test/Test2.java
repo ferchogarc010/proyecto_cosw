@@ -64,10 +64,10 @@ public class Test2 {
     @Test
     public void segundoTest(){
         Transaction tx=session.beginTransaction();
-        PlazoletaComida plazoleta = new PlazoletaComida(new PlazoletaComidaId("C.C. Santa fe", "Bogotá"), 1, 1, 1, 'W', 1, 1, 1, 'N');
+        PlazoletaComida plazoleta = new PlazoletaComida(new PlazoletaComidaId("C.C. Santa fe", "Bogotá"), 40, 40, 35, 'W', 40, 40, 65, 'N',5);
         session.save(plazoleta);
         
-        PlazoletaComida plazoletaAux = identificarPlazoleta(session, 1, 1, 1, 'W', 1, 1, 1, 'N');
+        PlazoletaComida plazoletaAux = identificarPlazoleta(session, 40, 40, 32, 'W', 40, 40, 63, 'N');
         
         Assert.assertEquals(plazoleta, plazoletaAux);
         
@@ -79,8 +79,11 @@ public class Test2 {
             float minutosLat, float segundosLat, char orientacionLat){
         
         Query q = s.createQuery("from PlazoletaComida where gradosLon=:gradosLon AND "
-                + "minutosLon=:minutosLon AND segundosLon=:segundosLon AND orientacionLon=:orienteacionLon AND "
-                + "gradosLat=:gradosLat AND minutosLat=:minutosLat AND segundosLat=:segundosLat AND orientacionLat=:orienteacionLat");
+                + "minutosLon=:minutosLon AND segundosLon - radio <=:segundosLon AND "
+                + "segundosLon + radio >=:segundosLon AND orientacionLon=:orienteacionLon AND "
+                + "gradosLat=:gradosLat AND minutosLat=:minutosLat "
+                + "AND segundosLat - radio <=:segundosLat AND segundosLat + radio >=:segundosLat "
+                + "AND orientacionLat=:orienteacionLat");
         q.setFloat("gradosLon", gradosLon);
         q.setFloat("minutosLon", minutosLon);
         q.setFloat("segundosLon", segundosLon);
