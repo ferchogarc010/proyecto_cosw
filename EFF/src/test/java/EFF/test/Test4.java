@@ -5,16 +5,16 @@
  */
 package EFF.test;
 
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Categoria;
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Cliente;
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Franquicia;
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Pedido;
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PedidoProducto;
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PlazoletaComida;
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PlazoletaComidaId;
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Producto;
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.ProductoId;
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.Sucursal;
+import edu.eci.cosw.proyecto_eff.model.Categoria;
+import edu.eci.cosw.proyecto_eff.model.Cliente;
+import edu.eci.cosw.proyecto_eff.model.Franquicia;
+import edu.eci.cosw.proyecto_eff.model.Pedido;
+import edu.eci.cosw.proyecto_eff.model.PedidoProducto;
+import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
+import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
+import edu.eci.cosw.proyecto_eff.model.Producto;
+import edu.eci.cosw.proyecto_eff.model.ProductoId;
+import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import java.util.Arrays;
 import java.util.List;
 import org.hibernate.Query;

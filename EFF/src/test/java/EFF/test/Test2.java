@@ -6,8 +6,8 @@
 package EFF.test;
 
 
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PlazoletaComida;
-import edu.eci.cosw.proyecto_eff.simplepersistencelayer.PlazoletaComidaId;
+import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
+import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;

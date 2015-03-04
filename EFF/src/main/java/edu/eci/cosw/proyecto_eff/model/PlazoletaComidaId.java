@@ -1,4 +1,4 @@
-package edu.eci.cosw.proyecto_eff.simplepersistencelayer;
+package edu.eci.cosw.proyecto_eff.model;
 // Generated Feb 16, 2015 2:07:09 PM by Hibernate Tools 4.3.1
 
 
